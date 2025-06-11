@@ -1,12 +1,17 @@
 {
   "name": "@webinex/flexy",
   "private": false,
-  "version": "0.0.1",
+  "version": "1.0.0-build1",
+  "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
+  "readme": "./README.md",
   "files": [
-    "dist"
+    "README.md",
+    "dist",
+    "lib",
+    "src"
   ],
   "scripts": {
     "dev": "vite",
@@ -26,6 +31,7 @@
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
+    "antd": "^5.26.0",
     "eslint": "^9.13.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.13",

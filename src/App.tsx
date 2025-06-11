@@ -1,42 +1,28 @@
-import {
-  ButtonHTMLAttributes,
-  DetailedHTMLProps,
-  PropsWithChildren,
-} from 'react';
-import { $Flexy, flexy, FlexyContext } from '../lib';
+import './App.css';
+import { Tabs } from 'antd';
+import { FlexyDemo } from './FlexyDemo';
+import { ThemeDemo } from './ThemeDemo';
+import { useEffect, useState } from 'react';
 
-const Section = flexy('Section', ({ children }: PropsWithChildren<object>) => {
-  return <section>{children}</section>;
-});
+export function App() {
+  const [active, setActive] = useState<string>(
+    window.location.hash.length > 0 ? window.location.hash.slice(1) : 'basic'
+  );
 
-const Button = flexy(
-  'Button',
-  (
-    props: DetailedHTMLProps<
-      ButtonHTMLAttributes<HTMLButtonElement>,
-      HTMLButtonElement
-    >
-  ) => <button {...props} />
-);
+  useEffect(() => {
+    window.location.hash = active;
+  }, [active]);
 
-type Components = $Flexy<typeof Section | typeof Button>;
-
-const CUSTOMIZE: Components = {
-  Button: (props) => (
-    <div>
-      Before button: <Button.Component {...props} />
-    </div>
-  ),
-};
-
-function App() {
   return (
-    <FlexyContext.Provider value={CUSTOMIZE}>
-      <Section>
-        <Button>Click me</Button>
-      </Section>
-    </FlexyContext.Provider>
+    <div className="app">
+      <Tabs
+        activeKey={active}
+        onChange={setActive}
+        items={[
+          { key: 'basic', label: 'Basic', children: <FlexyDemo /> },
+          { key: 'theme', label: 'Theme', children: <ThemeDemo /> },
+        ]}
+      />
+    </div>
   );
 }
-
-export default App;

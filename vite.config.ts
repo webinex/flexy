@@ -20,7 +20,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'lib/index.tsx'),
       formats: ['es'],
-      fileName: 'main',
-    }
+      fileName: 'index',
+    },
   },
 });

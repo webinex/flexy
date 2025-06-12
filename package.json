@@ -1,7 +1,7 @@
 {
   "name": "@webinex/flexy",
   "private": false,
-  "version": "1.0.0-build1",
+  "version": "1.0.0",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.js",
